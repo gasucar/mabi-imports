@@ -1,9 +1,10 @@
 import banner from "../../../assets/images/dashboard_banner.png";
+import CustomButton from "../../../shared/ui/buttons/custom_button";
 
 const Dashboard = () => {
   return (
     <section
-      className="relative h-[90vh] w-full bg-cover bg-center flex items-center justify-center"
+      className="relative h-screen w-full bg-cover bg-center flex items-center justify-center"
       style={{ backgroundImage: `url(${banner})` }}
     >
       {/* Dark overlay */}
@@ -21,14 +22,13 @@ const Dashboard = () => {
           Curated for your unique personality and taste.
         </p>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:opacity-90 transition">
+        <div className="mt-8 flex flex-col sm:flex-row gap-8 justify-center">
+          <CustomButton variant="primary" size="lg">
             Talk to Perfumina AI
-          </button>
-
-          <button className="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition">
-            Shop Collection
-          </button>
+          </CustomButton>
+          <CustomButton variant="outline" size="lg">
+            Go catalog
+          </CustomButton>
         </div>
 
       </div>

@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <nav className="bg-[#f3f4f6] text-black p-4">
+    <nav className="bg-[#e2e2e2] text-black p-4 sticky top-0 z-50">
         <div className="container mx-auto flex items-center justify-between">
             <div className="text-2xl font-semibold uppercase font-serif">mabi imports</div>
             <div className="w-139.5 flex justify-between font-medium text-sm">
