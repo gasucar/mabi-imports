@@ -23,3 +23,29 @@ body {
 .animate-marquee {
   animation: marquee 25s linear infinite;
 }
+
+/* SCROLLBAR PREMIUM */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #111;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #222;
+}
+
+/* Firefox */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #222 transparent;
+}
