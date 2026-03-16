@@ -1,6 +1,6 @@
 import { type ButtonHTMLAttributes, type ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "danger";
+type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "danger" | "secondary-outline";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,6 +19,8 @@ const variantStyles: Record<ButtonVariant, string> = {
     "bg-gray-700 text-white hover:bg-gray-600",
   outline:
     "border border-gray-300 text-white hover:bg-white hover:text-black",
+  "secondary-outline":
+    "border border-gray-300 text-black hover:bg-black hover:text-white transition duration-300 ease-in-out",
   ghost:
     "text-gray-900 hover:bg-gray-100",
   danger:

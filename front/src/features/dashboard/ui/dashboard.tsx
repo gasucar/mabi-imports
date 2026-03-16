@@ -1,11 +1,13 @@
-import Section1 from "../components/section1";
-import Section2 from "../components/section2";
+import Section1 from "../sections/section1";
+import Section2 from "../sections/section2";
+import Section3 from "../sections/section3";
 
 const Dashboard = () => {
   return (
     <div>
       <Section1 />
       <Section2 />
+      <Section3 />
     </div>
   );
 };

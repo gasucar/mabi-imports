@@ -29,7 +29,7 @@ const ChatMessage = ({ sender, children }: Props) => {
         ${
           isUser
             ? "bg-white text-black rounded-br-sm"
-            : "bg-neutral-800 text-neutral-200 rounded-bl-sm"
+            : "bg-pink-400 text-neutral-200 rounded-bl-sm"
         }
         `}
       >

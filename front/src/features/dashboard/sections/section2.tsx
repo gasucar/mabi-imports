@@ -2,12 +2,14 @@ import { motion } from "framer-motion";
 import fingerprint from "../../../assets/icons/fingerprint_icon.png";
 import laboratory from "../../../assets/icons/laboratory_bottle_icon.png";
 import perfuminaIcon from "../../../assets/icons/perfumina_icon.png";
-import ChatMock from "../shared/chat_mock";
+import ChatMock from "../components/chat_mock";
 import { useRef, useState } from "react";
+import { useChat } from "../../ai_assistant/chat/hooks/use_chat";
 
 const Section2 = () => {
-const [startChat, setStartChat] = useState(false);
+  const [startChat, setStartChat] = useState(false);
   const chatRef = useRef(null);
+  const { setIsVisible } = useChat();
   return (
     <section className="w-full bg-black text-white py-28 px-6">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
@@ -20,6 +22,10 @@ const [startChat, setStartChat] = useState(false);
           transition={{ duration: 0.9 }}
           viewport={{ once: true }}
           className="space-y-10"
+          onViewportEnter={() => {
+            setStartChat(true);
+            setIsVisible(true);
+          }}
         >
           <span className="inline-block text-xs tracking-widest border border-neutral-700 px-4 py-1 rounded-full text-neutral-300">
             INTELLIGENT SCENT PROFILING
@@ -82,9 +88,10 @@ const [startChat, setStartChat] = useState(false);
 
           <motion.div
             whileHover={{ rotate: 0 }}
-            initial={{ rotate: -2 }} 
+            initial={{ rotate: -2 }}
             transition={{ type: "spring", stiffness: 120 }}
-            className="w-95 h-130 bg-neutral-900 rounded-2xl border border-neutral-800 shadow-2xl flex flex-col overflow-hidden"
+            className="w-95 h-130 bg-neutral-900 rounded-2xl border       border-neutral-800
+ shadow-2xl flex flex-col overflow-hidden"
           >
 
             {/* HEADER */}
@@ -94,7 +101,7 @@ const [startChat, setStartChat] = useState(false);
               <div className="flex items-center gap-3">
                 <img
                   src={perfuminaIcon}
-                  className="w-9 h-9 rounded-full"
+                  className="w-9 h-9 rounded-full bg-pink-400"
                 />
 
                 <div>
@@ -115,17 +122,34 @@ const [startChat, setStartChat] = useState(false);
 
             {/* INPUT */}
 
-            <div className="p-3 border-t border-neutral-800 bg-neutral-950">
+            <div className="border-t border-neutral-800 p-3 flex gap-2">
 
-              <div className="flex items-center justify-between bg-neutral-900 rounded-full px-4 py-2 text-sm text-neutral-500">
+              <input
+                placeholder="Type your message..."
+                className="
+                flex-1
+                bg-neutral-800
+                text-white
+                rounded-full
+                px-4
+                py-2
+                text-sm
+                outline-none
+                "
+              />
 
-                <span>Type your response...</span>
-
-                <div className="w-7 h-7 bg-white text-black flex items-center justify-center rounded-full text-xs">
-                  ↑
-                </div>
-
-              </div>
+              <button
+                className="
+               bg-white
+               text-black
+               px-4
+               rounded-full
+               text-sm
+               cursor-pointer
+               "
+              >
+                Send
+              </button>
 
             </div>
 

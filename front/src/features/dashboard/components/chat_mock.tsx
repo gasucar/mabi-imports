@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import ChatMessage from "../../../shared/ui/chat/chat_message";
 import { motion } from "framer-motion";
+import { useChat } from "../../ai_assistant/chat/hooks/use_chat";
 
 const ChatMock = () => {
 
     const [step, setStep] = useState(0);
+    const { setIsOpen } = useChat();
+    
 
     const containerRef = useRef<HTMLDivElement | null>(null);
     const bottomRef = useRef<HTMLDivElement | null>(null);
@@ -14,9 +17,9 @@ const ChatMock = () => {
 
         const timers = [
             setTimeout(() => setStep(1), 1200),
-            setTimeout(() => setStep(2), 3800),
-            setTimeout(() => setStep(3), 6300),
-            setTimeout(() => setStep(4), 8000),
+            setTimeout(() => setStep(2), 3300),
+            setTimeout(() => setStep(3), 5300),
+            setTimeout(() => setStep(4), 6700),
         ];
 
         return () => timers.forEach(clearTimeout);
@@ -103,9 +106,10 @@ const ChatMock = () => {
                         hover:opacity-80
                         transition
                         shadow-lg
-                        border border-neutral-400
+                        border border-pink-400
                         cursor-pointer
                         "
+                        onClick={() => setIsOpen(true)}
                     >
                         Probalo ahora!
                     </motion.button>
