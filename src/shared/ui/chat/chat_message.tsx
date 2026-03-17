@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import AIMessageRenderer from "./ai_message_renderer";
 
 type Props = {
   sender: "ai" | "user";
@@ -19,21 +20,26 @@ const ChatMessage = ({ sender, children }: Props) => {
 
       <div
         className={`
-        max-w-[75%]
+        max-w-[80%]
         px-4 py-3
         rounded-xl
         text-sm
         leading-relaxed
         shadow-md
 
-        ${
-          isUser
+        ${isUser
             ? "bg-white text-black rounded-br-sm"
             : "bg-pink-400 text-neutral-200 rounded-bl-sm"
-        }
+          }
         `}
       >
-        {children}
+        {isUser ? (
+          <div className="whitespace-pre-line">
+            {children}
+          </div>
+        ) : (
+          <AIMessageRenderer text={children as string} />
+        )}
       </div>
 
     </motion.div>

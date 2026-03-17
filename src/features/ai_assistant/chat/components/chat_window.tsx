@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import perfuminaIcon from "../../../../assets/icons/perfumina_icon.png";
 import { useChat } from "../hooks/use_chat";
 import TypingIndicator from "../../../../shared/ui/chat/typing_indicator";
+import { sendChatMessage } from "../../api/chat_api";
 
 const ChatWindow = () => {
 
@@ -32,7 +33,12 @@ const ChatWindow = () => {
 
     if (!input.trim()) return;
 
-    const userMessage = { sender: "user", text: input };
+    const userText = input;
+
+    const userMessage = {
+      sender: "user",
+      text: userText
+    };
 
     setMessages(prev => [...prev, userMessage]);
 
@@ -40,46 +46,35 @@ const ChatWindow = () => {
 
     setIsTyping(true);
 
-    setTimeout(() => {
+    try {
 
-      const aiReplies = [
-        "Interesting! Do you prefer fresh citrus or deeper woody scents?",
-        "Great choice. Fresh scents often include bergamot or green tea.",
-        "I might have the perfect fragrance for you. Let me think...",
-        "That profile reminds me of some elegant Arabic fragrances."
-      ];
+      const data = await sendChatMessage(userText);
 
-      const randomReply =
-        aiReplies[Math.floor(Math.random() * aiReplies.length)];
+      await new Promise((resolve) =>
+        setTimeout(resolve, 800 + Math.random() * 1200)
+      );
 
       setMessages(prev => [
         ...prev,
-        { sender: "ai", text: randomReply }
+        {
+          sender: "ai",
+          text: data.response
+        }
       ]);
 
+    } catch (err) {
+      console.log(err);
+      setMessages(prev => [
+        ...prev,
+        {
+          sender: "ai",
+          text: "Sorry, something went wrong. Please try again."
+        }
+      ]);
+
+    } finally {
       setIsTyping(false);
-
-    }, 1200 + Math.random() * 1200); // 1.2s – 2.4s delay
-
-    /*
-    ======================================================
-    BACKEND INTEGRATION PLACE
-    ======================================================
-
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      body: JSON.stringify({ message: input })
-    });
-
-    const data = await response.json();
-
-    setMessages(prev => [
-      ...prev,
-      { sender: "ai", text: data.reply }
-    ]);
-
-    ======================================================
-    */
+    }
 
   };
 
