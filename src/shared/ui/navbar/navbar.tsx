@@ -24,7 +24,7 @@ const Navbar = () => {
                     </div>
                 </a>
                 <div className="w-139.5 flex justify-between font-medium text-[16px]">
-                    <a href="/" className="">{t("navbar.catalog")}</a>
+                    <a href="/catalog" className="">{t("navbar.catalog")}</a>
                     <a href="/" className="">{t("navbar.perfumina_ai")}</a>
                     <a href="/about" className="">{t("navbar.about")}</a>
                     <a href="/contact" className="">{t("navbar.contact")}</a>

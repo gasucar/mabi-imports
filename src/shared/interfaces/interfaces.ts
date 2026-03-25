@@ -96,3 +96,13 @@ export interface IUserPreferredNotes {
     created_at: string;
 }
 
+export interface IPerfumeFilters {
+    search: string;
+    brands: string[];
+    genders: string[];
+    seasons: string[];
+    intensity: string[];
+    min_price: number;
+    max_price: number;
+    page: number;
+}
