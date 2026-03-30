@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import ChatMessage from "../../../shared/constants/chat/chat_message";
 import { motion } from "framer-motion";
 import { useChat } from "../../ai_assistant/chat/hooks/use_chat";
+import { useTranslation } from "react-i18next";
 
 const ChatMock = () => {
 
+    const { t } = useTranslation()
     const [step, setStep] = useState(0);
     const { setIsOpen } = useChat();
-    
+
 
     const containerRef = useRef<HTMLDivElement | null>(null);
     const bottomRef = useRef<HTMLDivElement | null>(null);
@@ -44,26 +46,25 @@ const ChatMock = () => {
 
         <div
             ref={containerRef}
-            className= "flex flex-col gap-4 overflow-y-auto h-full pr-2 scroll-smooth"
-            
+            className="flex flex-col gap-4 overflow-y-auto h-full pr-2 scroll-smooth"
+
         >
 
             {step >= 1 && (
                 <ChatMessage sender="ai">
-                    Bienvenido! Soy Perfumina, activa 24/7 para encontrar
-                    el perfume ideal para vos.
+                    {t("chat.initialMsg")}
                 </ChatMessage>
             )}
 
             {step >= 2 && (
                 <ChatMessage sender="user">
-                    Me gustan los aromas frescos y juveniles.
+                    {t("chat.userMsgMock")}
                 </ChatMessage>
             )}
 
             {step >= 3 && (
                 <ChatMessage sender="ai">
-                    Genial! Ahora te muestro las mejores opciones que tenemos en stock para vos.
+                    {t("chat.secondMsgMock")}
 
                     <div className="mt-3 bg-neutral-900 rounded-lg p-3 animate-pulse">
 
@@ -86,7 +87,6 @@ const ChatMock = () => {
                     transition={{ duration: 0.4 }}
                     className="flex justify-center pt-2"
                 >
-
                     <motion.button
                         animate={{
                             scale: [1, 1.06, 1],
@@ -111,9 +111,8 @@ const ChatMock = () => {
                         "
                         onClick={() => setIsOpen(true)}
                     >
-                        Probalo ahora!
+                        {t("chat.tryItNow")}
                     </motion.button>
-
                 </motion.div>
 
             )}

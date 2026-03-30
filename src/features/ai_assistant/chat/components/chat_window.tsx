@@ -5,9 +5,10 @@ import perfuminaIcon from "../../../../assets/icons/perfumina_icon.png";
 import { useChat } from "../hooks/use_chat";
 import TypingIndicator from "../../../../shared/constants/chat/typing_indicator";
 import { sendChatMessage } from "../../api/chat_api";
+import { useTranslation } from "react-i18next";
 
 const ChatWindow = () => {
-
+  const { t } = useTranslation();
   const { isOpen, setIsOpen } = useChat();
 
   const [isTyping, setIsTyping] = useState(false);
@@ -17,7 +18,7 @@ const ChatWindow = () => {
   const [messages, setMessages] = useState([
     {
       sender: "ai",
-      text: "Hi! I'm Perfumina. Tell me what scents you like."
+      text: t("chat.initialMsg")
     }
   ]);
 
@@ -113,19 +114,17 @@ const ChatWindow = () => {
 
           <div>
             <p className="text-sm font-medium text-white">
-              Perfumina AI
+              {t("chat.title")}
             </p>
 
-            <p className="text-xs text-neutral-400 tracking-wide">
-              PERSONAL PERFUMER
+            <p className="text-xs text-neutral-400 tracking-wide uppercase">
+              {t("chat.subtitle")}
             </p>
           </div>
 
         </div>
 
         <div className="flex items-center gap-3">
-
-          {/* online indicator */}
 
           <div className="w-2 h-2 bg-green-500 rounded-full" />
 
@@ -163,7 +162,7 @@ const ChatWindow = () => {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your message..."
+          placeholder={t("chat.placheholder")}
           className="
           flex-1
           bg-neutral-800
@@ -190,7 +189,7 @@ const ChatWindow = () => {
           cursor-pointer
           "
         >
-          Send
+          {t("chat.send")}
         </button>
 
       </div>

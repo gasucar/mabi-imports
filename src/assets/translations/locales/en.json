@@ -35,5 +35,15 @@
         "subtitle": "Discover our most exquisite fragrances",
         "loading": "Loading...",
         "button": "View all fragrances"
+    },
+    "chat": {
+        "initialMsg": "Welcome! I'm Perfumina, ready 24/7 to find your perfect perfume.",
+        "secondMsgMock": "Nice! Here are the best options we have in stock for your ideal perfume",
+        "userMsgMock": "I like fresh and youthful fragrances.",
+        "tryItNow": "Try it now!",
+        "title": "Perfumina AI",
+        "subtitle": "personal assitant",
+        "placeholder": "Type your message...",
+        "send": "Send"
     }
 }

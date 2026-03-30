@@ -2,16 +2,17 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  // Navigate,
 } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import Dashboard from "../features/dashboard/page/dashboard_page";
 import { CatalogPage } from "../features/catalog/page/catalog_page";
+import ScrollToTop from "../shared/constants/scroll_to_top";
 
 function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Dashboard />} />

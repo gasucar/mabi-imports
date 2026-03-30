@@ -3,6 +3,7 @@ import CustomButton from "../../../shared/constants/buttons/custom_button";
 import PerfumePresentation from "../../../shared/constants/perfume/perfume_presentation";
 import { useTranslation } from "react-i18next";
 import { usePerfumes } from "../../../shared/hooks/usePerfumes";
+import { Link } from "react-router-dom";
 
 const container = {
   hidden: {},
@@ -19,8 +20,9 @@ const fadeUp = {
 };
 
 const Section3 = () => {
-  const {t} = useTranslation()  
-  const {perfumes, loading} = usePerfumes()
+  const { t } = useTranslation()
+  const { perfumes, loading } = usePerfumes()
+
 
   return (
     <section className="w-full bg-white py-28 px-6">
@@ -65,7 +67,7 @@ const Section3 = () => {
           {loading ?
             <p className="text-center col-span-full text-neutral-500">{t("section3.loading")}</p>
             :
-            perfumes.slice(0,4).map(perfume => (
+            perfumes.slice(0, 4).map(perfume => (
               <PerfumePresentation
                 key={perfume.id}
                 name={perfume.name}
@@ -87,9 +89,11 @@ const Section3 = () => {
           transition={{ duration: 0.6 }}
           className="flex justify-center mt-16"
         >
-          <CustomButton variant="secondary-outline" size="lg">
-            {t("section3.button")}
-          </CustomButton>
+          <Link to="/catalog">
+            <CustomButton variant="secondary-outline" size="lg" >
+              {t("section3.button")}
+            </CustomButton>
+          </Link>
         </motion.div>
 
       </div>

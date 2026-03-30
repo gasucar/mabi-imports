@@ -35,5 +35,15 @@
         "subtitle": "Descubrí nuestras fragancias más exclusivas",
         "loading": "Cargando...",
         "button": "Ver todas las fragancias"
+    },
+    "chat": {
+        "initialMsg": "Bienvenido! Soy Perfumina, activa 24/7 para encontrar el perfume ideal para vos.",
+        "secondMsgMock": "Genial! Ahora te muestro las mejores opciones que tenemos en stock para vos.",
+        "userMsgMock": "Me gustan los aromas frescos y juveniles.",
+        "tryItNow": "Probalo ahora!",
+        "title": "Perfumina AI",
+        "subtitle": "asistente personal",
+        "placeholder": "Escribí tu mensaje...",
+        "send": "Enviar"
     }
 }

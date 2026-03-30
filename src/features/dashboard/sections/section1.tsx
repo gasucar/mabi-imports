@@ -1,9 +1,12 @@
 import CustomButton from "../../../shared/constants/buttons/custom_button"
 import banner from "../../../assets/images/dashboard_banner.png";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { useChat } from "../../ai_assistant/chat/hooks/use_chat";
 
 const Section1 = () => {
   const { t } = useTranslation();
+  const { setIsOpen} = useChat();
 
   return (
     <section
@@ -26,12 +29,14 @@ const Section1 = () => {
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-8 justify-center">
-          <CustomButton variant="primary" size="lg">
+          <CustomButton variant="primary" size="lg" onClick={() => setIsOpen(true)}>
             {t("section1.talkToPerfumina")}
           </CustomButton>
-          <CustomButton variant="outline" size="lg">
-            {t("section1.goCatalog")}
-          </CustomButton>
+          <Link to="/catalog">
+            <CustomButton variant="outline" size="lg">
+              {t("section1.goCatalog")}
+            </CustomButton>
+          </Link>
         </div>
 
       </div>

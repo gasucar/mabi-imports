@@ -11,7 +11,7 @@ const Section2 = () => {
   const { t } = useTranslation()
   const [startChat, setStartChat] = useState(false);
   const chatRef = useRef(null);
-  const { setIsVisible } = useChat();
+  const { setIsVisible, setIsOpen } = useChat();
   return (
     <section className="w-full bg-black text-white py-28 px-6">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
@@ -52,7 +52,7 @@ const Section2 = () => {
               </h3>
 
               <p className="text-xs text-neutral-500">
-                {t("section2.feature1_desc")}.
+                {t("section2.feature1_desc")}
               </p>
             </div>
 
@@ -70,7 +70,7 @@ const Section2 = () => {
 
           </div>
 
-          <button className="flex items-center gap-2 text-sm border-b border-white pb-1 hover:opacity-70 transition">
+          <button onClick={() => setIsOpen(true)} className="cursor-pointer flex items-center gap-2 text-sm border-b border-white pb-1 hover:opacity-70 transition">
             {t("section2.cta")} →
           </button>
         </motion.div>
