@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { GENDERS, INTENSITY, SEASONS } from "../../../shared/constants/perfumeFilters";
 import type { IPerfumeFilters } from "../../../shared/interfaces/interfaces";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   filters: IPerfumeFilters;
@@ -11,6 +12,7 @@ type Props = {
 
 const FiltersSidebar = ({ filters, updateParams, brands = [], maxPrice }: Props) => {
 
+  const { t } = useTranslation()
   const [localPrice, setLocalPrice] = useState(Number(filters.price_max) || maxPrice);
 
   useEffect(() => {
@@ -49,7 +51,7 @@ const FiltersSidebar = ({ filters, updateParams, brands = [], maxPrice }: Props)
 
       {/* HEADER */}
       <div className="flex justify-between items-center mb-6 border-b border-gray-200 pb-4">
-        <h3 className="font-serif text-lg">Filters</h3>
+        <h3 className="font-serif text-lg capitalize">{t("catalog.filters")}</h3>
         <button className="text-xs uppercase text-gray-500 hover:text-black"
           onClick={
             () =>
@@ -62,25 +64,25 @@ const FiltersSidebar = ({ filters, updateParams, brands = [], maxPrice }: Props)
                 price_max: String(maxPrice),
               })
           }>
-          Clear All
+          {t("catalog.clearAll")}
         </button>
       </div>
 
       {/* BRAND */}
-      <FilterGroup title="Brand" items={brands} onChange={(v) => toggleMulti("brands", v)} />
+      <FilterGroup title={t("catalog.brand")} items={brands} onChange={(v) => toggleMulti("brands", v)} />
 
       {/* GENDER */}
-      <FilterGroup title="Gender" items={GENDERS} onChange={(v) => toggleMulti("gender", v)} />
+      <FilterGroup title={t("catalog.gender")} items={GENDERS} onChange={(v) => toggleMulti("gender", v)} />
 
       {/* SEASON */}
-      <FilterGroup title="Season" items={SEASONS} onChange={(v) => toggleMulti("season", v)} />
+      <FilterGroup title={t("catalog.season")} items={SEASONS} onChange={(v) => toggleMulti("season", v)} />
 
       {/* INTENSITY */}
-      <FilterGroup title="Intensity" items={INTENSITY} onChange={(v) => toggleMulti("intensity", v)} />
+      <FilterGroup title={t("catalog.intensity")} items={INTENSITY} onChange={(v) => toggleMulti("intensity", v)} />
 
       {/* PRICE RANGE */}
       <div className="mb-6">
-        <h4 className="text-xs uppercase tracking-wider mb-4">Price Range</h4>
+        <h4 className="text-xs uppercase tracking-wider mb-4">{t("catalog.priceRange")}</h4>
 
         <input
           type="range"

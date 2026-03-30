@@ -45,5 +45,20 @@
         "subtitle": "personal assitant",
         "placeholder": "Type your message...",
         "send": "Send"
+    },
+    "catalog":{
+        "title":"Explore Our Fragrance Collection",
+        "subtitle":"Discover curated Arabic perfumes tailored to your personality",
+        "clearAll": "clear all",
+        "filters": "filters",
+        "brand": "brand",
+        "gender": "gender",
+        "season": "season",
+        "intensity": "intensity",
+        "priceRange": "prince range",
+        "showing": "showing {{start}}-{{end}} of {{total}} fragances",
+        "search": "search fragances...",
+        "lowCost": "low cost",
+        "highCost": "high cost"
     }
 }

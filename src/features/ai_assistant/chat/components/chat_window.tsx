@@ -162,7 +162,7 @@ const ChatWindow = () => {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder={t("chat.placheholder")}
+          placeholder={t("chat.placeholder")}
           className="
           flex-1
           bg-neutral-800

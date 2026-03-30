@@ -45,5 +45,20 @@
         "subtitle": "asistente personal",
         "placeholder": "Escribí tu mensaje...",
         "send": "Enviar"
+    },
+    "catalog": {
+        "title": "Explora nuestra colección de perfumes",
+        "subtitle": "Descubrí perfumes árabes seleccionados según tu personalidad",
+        "clearAll": "limpiar todo",
+        "filters": "filtros",
+        "brand": "marca",
+        "gender": "género",
+        "season": "estación",
+        "intensity": "intensidad",
+        "priceRange": "rango de precio",
+        "showing": "viendo {{start}}-{{end}} de {{total}} fragancias",
+        "search": "buscar perfumes...",
+        "lowCost": "menor precio",
+        "highCost": "mayor precio"
     }
 }
