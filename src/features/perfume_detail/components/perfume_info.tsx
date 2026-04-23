@@ -5,6 +5,7 @@ import { NotesSection } from "./notes_section";
 import { formatPrice } from "../../../shared/utils/format_price";
 
 export const PerfumeInfo = ({ perfume }: { perfume: IPerfume }) => {
+  
   return (
     <div className="flex flex-col gap-6 max-w-md">
 
@@ -55,7 +56,7 @@ export const PerfumeInfo = ({ perfume }: { perfume: IPerfume }) => {
       </div>
 
       {/* BUTTONS */}
-      <ActionButtons />
+      <ActionButtons perfume={perfume} />
     </div>
   );
 };

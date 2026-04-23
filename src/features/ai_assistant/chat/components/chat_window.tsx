@@ -9,10 +9,55 @@ import { useTranslation } from "react-i18next";
 
 const ChatWindow = () => {
   const { t } = useTranslation();
-  const { isOpen, setIsOpen } = useChat();
+  const { isOpen, setIsOpen, initialMessage, setInitialMessage } = useChat();
 
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+  if (!initialMessage) return;
+
+  const sendInitial = async () => {
+
+    const userMessage = {
+      sender: "user",
+      text: initialMessage
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+
+    setIsTyping(true);
+
+    try {
+      const data = await sendChatMessage(initialMessage);
+
+      setMessages(prev => [
+        ...prev,
+        {
+          sender: "ai",
+          text: data.response
+        }
+      ]);
+
+    } catch (err:unknown) {
+      console.log(err);
+      
+      setMessages(prev => [
+        ...prev,
+        {
+          sender: "ai",
+          text: "Sorry, something went wrong."
+        }
+      ]);
+    } finally {
+      setIsTyping(false);
+      setInitialMessage(null); // 🔥 limpiar
+    }
+  };
+
+  sendInitial();
+
+}, [initialMessage, setInitialMessage ]);
 
 
   const [messages, setMessages] = useState([
